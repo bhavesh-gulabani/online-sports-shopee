@@ -3,37 +3,34 @@ package com.cg.sports.service;
 import java.util.List;
 
 import com.cg.sports.bean.Customer;
+import com.cg.sports.dao.CustomerRepositoryImpl;
 
 public class CustomerServiceImpl implements ICustomerService {
 
+	CustomerRepositoryImpl custRepo = new CustomerRepositoryImpl();
 	@Override
 	public Customer addCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		return null;
+		return custRepo.addCustomer(customer);
 	}
 
 	@Override
 	public Customer removeCustomer(long custId) {
-		// TODO Auto-generated method stub
-		return null;
+		return custRepo.removeCustomer(custId);
 	}
 
 	@Override
 	public Customer updateCustomer(long custId, Customer customer) {
-		// TODO Auto-generated method stub
-		return null;
+		return custRepo.updateCustomer(custId, customer);
 	}
 
 	@Override
 	public Customer getCustomer(long custId) {
-		// TODO Auto-generated method stub
-		return null;
+		return custRepo.getCustomer(custId);
 	}
 
 	@Override
 	public List<Customer> getAllCustomers() {
-		// TODO Auto-generated method stub
-		return null;
+		return custRepo.getAllCustomers();
 	}
 
 }

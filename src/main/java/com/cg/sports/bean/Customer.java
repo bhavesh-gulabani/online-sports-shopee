@@ -2,13 +2,23 @@ package com.cg.sports.bean;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Customer {
-	
-	private String userId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long userId;
 	private String name;
 	private String email;
 	private String contactNo;
 	private  LocalDate dob;
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 	
 	// Constructors
@@ -16,9 +26,8 @@ public class Customer {
 		super();
 	}
 	
-	public Customer(String userId, String name, String email, String contactNo, LocalDate dob, Address address) {
+	public Customer(String name, String email, String contactNo, LocalDate dob, Address address) {
 		super();
-		this.userId = userId;
 		this.name = name;
 		this.email = email;
 		this.contactNo = contactNo;
@@ -27,11 +36,11 @@ public class Customer {
 	}
 
 	// Getters and Setters
-	public String getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 
@@ -81,4 +90,5 @@ public class Customer {
 		return "Customer [userId=" + userId + ", name=" + name + ", email=" + email + ", contactNo=" + contactNo
 				+ ", dob=" + dob + ", address=" + address + "]";
 	}
+	
 }

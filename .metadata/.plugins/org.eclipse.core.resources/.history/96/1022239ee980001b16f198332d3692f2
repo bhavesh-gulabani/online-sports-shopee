@@ -1,0 +1,5 @@
+package com.cg.sports.dao;
+
+public class IUserRepositoryImpl {
+
+}

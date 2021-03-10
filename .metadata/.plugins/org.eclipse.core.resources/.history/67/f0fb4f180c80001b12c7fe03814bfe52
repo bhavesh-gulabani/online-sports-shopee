@@ -1,0 +1,49 @@
+package com.cg.sports;
+
+import static org.junit.jupiter.api.Assertions.fail;
+
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
+
+import com.cg.sports.bean.User;
+
+class IUserRepoImplSpecs 
+{
+
+	User u = new User(1111,"1234","Customer");
+	
+	@BeforeAll
+	void beforeAllTest()
+	{
+		System.out.println("start testing");
+	}
+	
+	@AfterAll
+	void afterAllTest()
+	{
+		System.out.println("end testing");
+	}
+	
+	@BeforeEach
+	void beforeEachTest()
+	{
+		System.out.println("before testing");
+	}
+	
+	@AfterEach
+	void afterEachTest()
+	{
+		System.out.println("after testing");
+	}
+	
+	
+	
+	
+	
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

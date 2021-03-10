@@ -1,0 +1,68 @@
+package com.cg.sports;
+import org.junit.Assert;
+
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
+
+import com.cg.sports.bean.User;
+import com.cg.sports.dao.IUserRepositoryImpl;
+
+class IUserRepoImplSpecs 
+{
+
+	User u = new User(1111,"1234","Customer");
+	IUserRepositoryImpl userepo = new IUserRepositoryImpl();
+	
+	@BeforeAll
+	void beforeAllTest()
+	{
+		System.out.println("start testing");
+	}
+	
+	@AfterAll
+	void afterAllTest()
+	{
+		System.out.println("end testing");
+	}
+	
+	@BeforeEach
+	void beforeEachTest()
+	{
+		System.out.println("before testing");
+	}
+	
+	@AfterEach
+	void afterEachTest()
+	{
+		System.out.println("after testing");
+	}
+	
+	
+	@Test
+	void test1() {
+		System.out.println("Test1");
+		User returnuser = userepo.signIn(u);
+		Assert.assertNotNull(u);
+        Assert.assertEquals(u,returnuser); 
+	}
+	
+	
+	
+	
+	@Test
+	void test2() {
+		System.out.println("Test2");
+		User returnuser = userepo.signOut(u);
+		assertEquals(u,returnuser);
+
+		
+	}
+	
+
+	@Test
+	void test3() {
+		System.out.println("Test3");
+		fail("Not yet implemented");
+	}
+
+}

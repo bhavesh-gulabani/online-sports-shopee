@@ -1,0 +1,36 @@
+package com.cg.sports.dao;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import com.cg.sports.bean.User;
+
+public class IUserRepositoryImpl implements IUserRepository {
+	
+	EntityManagerFactory factory = Persistence.createEntityManagerFactory("test1");
+	EntityManager em = factory.createEntityManager();
+	
+	
+	
+	
+
+	@Override
+	public User signIn(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User signOut(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User changePassword(long id, User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,53 @@
+package com.cg.sports.dao;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+import com.cg.sports.bean.User;
+
+public class IUserRepositoryImpl implements IUserRepository 
+{
+	EntityManagerFactory factory = Persistence.createEntityManagerFactory("test1");
+	EntityManager em = factory.createEntityManager();	
+	//em.getTransaction().begin();
+	
+	//User u = new User("1111","1234","Customer");
+
+	@Override
+	public User signIn(User user) 
+	{
+		String select = "SELECT userId FROM User WHERE UserId = :UserId and Password=:Password";
+		 
+		    Query query = em.createQuery(select);
+		    query.setParameter("UserId", user.getUserId());
+		    query.setParameter("Password", user.getPassword());
+
+
+		    if(query.getResultList().size() == 0){
+		        System.out.println("Account does not exist!");
+		        return null;
+		    }
+		    else{
+		        System.out.println("Login Success!");
+				return user;
+
+		    }
+	}
+
+	@Override
+	public User signOut(User user) 
+	{
+		em.remove(user);
+		return null;
+	}
+
+	@Override
+	public User changePassword(long id, User user) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

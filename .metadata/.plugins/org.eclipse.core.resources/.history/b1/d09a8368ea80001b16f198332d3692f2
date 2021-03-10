@@ -1,0 +1,25 @@
+package com.cg.sports.dao;
+
+import com.cg.sports.bean.User;
+
+public class IUserRepositoryImpl implements IUserRepository {
+
+	@Override
+	public User signIn(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User signOut(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User changePassword(long id, User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

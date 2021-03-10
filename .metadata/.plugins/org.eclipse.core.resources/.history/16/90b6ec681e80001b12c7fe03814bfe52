@@ -1,0 +1,44 @@
+package com.cg.sports;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import com.cg.sports.bean.User;
+
+class UserSpecs {
+	
+
+	@Test
+	public void testGetUserId() throws Exception {
+		fail("Not yet implemented");
+	}
+	//test al repo laer mehtods 
+	@Test
+	public void testSetUserId() throws Exception {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testGetPassword() throws Exception {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetPassword() throws Exception {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetRole() throws Exception {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetRole() throws Exception {
+		fail("Not yet implemented");
+	}
+
+
+
+}

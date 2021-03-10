@@ -1,0 +1,22 @@
+package com.cg.sports;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import com.cg.sports.bean.User;
+
+class Iuser2 {
+	
+	User u = new User(1111,"1234","Customer");
+
+	@Test
+	void test1() {
+		System.out.println("Test1");
+		Iuser2 userepo = new Iuser2();
+		User returnUser = userepo.signIn(u);
+		assertNotNull(returnUser);
+        assertEquals(u,returnUser); 
+        System.out.println("Tes1");
+
+}

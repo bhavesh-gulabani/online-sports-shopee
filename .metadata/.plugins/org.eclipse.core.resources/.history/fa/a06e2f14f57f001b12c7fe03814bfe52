@@ -1,0 +1,33 @@
+package com.cg.sports.service;
+
+import com.cg.sports.bean.User;
+import com.cg.sports.dao.IUserRepository;
+import com.cg.sports.dao.IUserRepositoryImpl;
+
+public class IUserServiceImpl implements IUserService {
+	private IUserRepository repo = new IUserRepositoryImpl() 
+			
+	
+		
+		
+	
+
+	@Override
+	public User signIn(User user) {
+		repo.signIn(user);
+		return user;
+	}
+
+	@Override
+	public User signOut(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User changePassword(long id, User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

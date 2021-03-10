@@ -42,6 +42,7 @@ class CustomerTest {
 		
 	}
 
+	// Working
 	@Disabled
 	@Test
 	@Order(1)
@@ -50,6 +51,7 @@ class CustomerTest {
 		assertEquals(null, custRepo.addCustomer(customer));
 	}
 	
+	// Working
 	@Disabled
 	@Test
 	@Order(2)
@@ -59,42 +61,45 @@ class CustomerTest {
 
 		Customer testResult = custRepo.addCustomer(customer);
 		assertEquals(testResult, customer);
-		
 	}
 	
+	// Working
 	@Disabled
 	@Test
 	@Order(3)
 	void testRemoveCustomer() {
 		
-		long customerId = 52;
+		long customerId = 107;
 		Customer customerToBeRemoved = custRepo.getCustomer(customerId);
 		Customer testResult = custRepo.removeCustomer(customerId);
 		assertEquals(testResult, customerToBeRemoved);
 	}
 	
+	// Working
+	@Disabled
 	@Test
 	@Order(4)
 	void testUpdateCustomer() {
 		
-		long customerId = 58;
+		long customerId = 107;
 	
-		Address address = new Address("105", "Second street", "LA", "NY", "NY", 123456);
-		Customer newCustomerDetails = new Customer("John", "john123@gmail.com", "9876543210", LocalDate.of(1989, 03, 16), address);
+		Address address = new Address("105", "Third street", "LA", "NY", "NY", 123456);
+		Customer newCustomerDetails = new Customer("John", "johnNewNew@gmail.com", "9876543210", LocalDate.of(1989, 03, 16), address);
 		
 		Customer testResult = custRepo.updateCustomer(customerId, newCustomerDetails);
 		assertEquals(testResult, newCustomerDetails);
 	}
 	
+	// Working
 	@Disabled
 	@Test
 	@Order(5)
 	void testgetCustomer() {
-		long customerId = 58;
+		long customerId = 107;
 		
 		Address address = new Address("103", "First street", "LA", "NY", "NY", 123456);
 		Customer customerExpected = new Customer("John", "john@gmail.com", "9876543210", LocalDate.of(1989, 03, 16), address);
-		customerExpected.setUserId(58);
+		customerExpected.setCustomerId(58);
 		 
 		Customer testResult = custRepo.getCustomer(customerId);
 		
@@ -114,6 +119,7 @@ class CustomerTest {
 			    () -> assertEquals(customerExpected.getAddress().getStreet(), testResult.getAddress().getStreet()));
 	}
 
+	// Working
 	@Disabled
 	@Test
 	@Order(6)

@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import com.cg.sports.bean.Customer;
 import com.cg.sports.bean.Payment;
 
 public class PaymentRepositoryImpl implements IPaymentRepository {
@@ -25,28 +26,30 @@ public class PaymentRepositoryImpl implements IPaymentRepository {
 
 	@Override
 	public Payment removePayment(long id) {
-		Payment paymentToBeRemoved = getPaymentDetails(id);
-		String queryString = "DELETE Payment payment WHERE payment.paymentId = :pId";
-		Query query = entityManager.createQuery(queryString);
-		query.setParameter("pId", id);
 		entityManager.getTransaction().begin();
-		int recordsUpdated = query.executeUpdate();
+		Payment paymentToBeRemoved = getPaymentDetails(id);
+		entityManager.remove(paymentToBeRemoved);
 		entityManager.getTransaction().commit();
-		return recordsUpdated == -1 ? null : paymentToBeRemoved;
+		return paymentToBeRemoved;
 	}
 
 	@Override
 	public Payment updatePayment(long id, Payment payment) {
-		String queryString = "UPDATE Payment payment SET payment = :p WHERE payment.paymentId = :pId";
-		Query query = entityManager.createQuery(queryString);
-		query.setParameter("pId", id);
-		query.setParameter("p", payment);
-		
+
 		entityManager.getTransaction().begin();
-		int recordsUpdated = query.executeUpdate();
-		entityManager.getTransaction().commit();
 		
-		return recordsUpdated == -1 ? null : getPaymentDetails(id);
+		// Retrieve the original payment info
+		Payment originalPayment = getPaymentDetails(id);
+				
+		// Set modified details
+		originalPayment.setType(payment.getType());
+		originalPayment.setStatus(payment.getStatus());
+		originalPayment.setCard(payment.getCard());
+	
+		entityManager.merge(originalPayment);
+		
+		entityManager.getTransaction().commit();
+		return payment;
 	}
 
 	@Override

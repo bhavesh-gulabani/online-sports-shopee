@@ -14,7 +14,7 @@ public class Payment {
 	private long paymentId;
 	private String type;
 	private String status;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	private Card card;
 	
 	// Constructors

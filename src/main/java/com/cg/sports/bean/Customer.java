@@ -8,17 +8,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+
+// Extend User or incorporate HAS-A relationship with user
 
 @Entity
 public class Customer {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long userId;
+	private long customerId;
 	private String name;
 	private String email;
 	private String contactNo;
 	private  LocalDate dob;
-	@OneToOne(cascade = CascadeType.ALL)
+	
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	private Address address;
 	
 	// Constructors
@@ -36,12 +41,12 @@ public class Customer {
 	}
 
 	// Getters and Setters
-	public long getUserId() {
-		return userId;
+	public long getCustomerId() {
+		return customerId;
 	}
-
-	public void setUserId(long userId) {
-		this.userId = userId;
+	
+	public void setCustomerId(long customerId) {
+		this.customerId = customerId;
 	}
 
 	public String getName() {
@@ -87,7 +92,7 @@ public class Customer {
 	// toString
 	@Override
 	public String toString() {
-		return "Customer [userId=" + userId + ", name=" + name + ", email=" + email + ", contactNo=" + contactNo
+		return "Customer [customerId=" + customerId + ", name=" + name + ", email=" + email + ", contactNo=" + contactNo
 				+ ", dob=" + dob + ", address=" + address + "]";
 	}
 	

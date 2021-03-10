@@ -39,6 +39,7 @@ class PaymentTest {
 	void tearDown() throws Exception {
 	}
 	
+	// Working
 	@Disabled
 	@Test
 	@Order(1)
@@ -47,6 +48,7 @@ class PaymentTest {
 		assertEquals(null, paymentRepo.addPayment(payment));
 	}
 	
+	// Working
 	@Disabled
 	@Test
 	@Order(2)
@@ -59,41 +61,44 @@ class PaymentTest {
 		
 	}
 	
+	// Working
 	@Disabled
 	@Test
 	@Order(3)
 	void testRemovePayment() {
 		
-		long paymentId = 61;
+		long paymentId = 112;
 		Payment paymentToBeRemoved = paymentRepo.getPaymentDetails(paymentId);
 		Payment testResult = paymentRepo.removePayment(paymentId);
 		assertEquals(testResult, paymentToBeRemoved);
 	}
 	
+	// Working
 	@Disabled
 	@Test
 	@Order(4)
 	void testUpdatePayment() {
 		
-		long paymentId = 58;
+		long paymentId = 112;
 	
-		Card card = new Card("Gold", "123456", LocalDate.of(2030, 05, 12), 9876);
+		Card card = new Card("Platinum", "6543210", LocalDate.of(2030, 05, 12), 9876);
 		Payment newPaymentDetails = new Payment("card", "paid", card);
 		
 		Payment testResult = paymentRepo.updatePayment(paymentId, newPaymentDetails);
 		assertEquals(testResult, newPaymentDetails);
 	}
 	
+	// Working
 	@Disabled
 	@Test
 	@Order(5)
 	void testgetPayment() {
-		long paymentId = 63;
+		long paymentId = 112;
 		
 		Card card = new Card("Silver", "123456", LocalDate.of(2030, 05, 12), 12345);
-		card.setId(64);
+		card.setId(113);
 		Payment paymentExpected = new Payment("card", "paid", card);
-		paymentExpected.setPaymentId(63);
+		paymentExpected.setPaymentId(112);
 		
 		 
 		Payment testResult = paymentRepo.getPaymentDetails(paymentId);
@@ -112,6 +117,7 @@ class PaymentTest {
 			    () -> assertEquals(paymentExpected.getCard().getCvv(), testResult.getCard().getCvv()));
 	}
 
+	// Working
 	@Disabled
 	@Test
 	@Order(6)

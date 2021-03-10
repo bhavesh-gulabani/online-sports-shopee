@@ -25,34 +25,37 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
 
 	@Override
 	public Customer removeCustomer(long custId) {
-		Customer customerToBeRemoved = getCustomer(custId);
-		String queryString = "DELETE Customer customer WHERE customer.userId = :cId";
-		Query query = entityManager.createQuery(queryString);
-		query.setParameter("cId", custId);
 		entityManager.getTransaction().begin();
-		int recordsUpdated = query.executeUpdate();
+		Customer customerToBeRemoved = getCustomer(custId);		
+		entityManager.remove(customerToBeRemoved);
 		entityManager.getTransaction().commit();
-		return recordsUpdated == -1 ? null : customerToBeRemoved;
-		
+		return customerToBeRemoved;
 	}
 
 	@Override
 	public Customer updateCustomer(long custId, Customer customer) {
-		String queryString = "UPDATE Customer customer SET customer = :c WHERE customer.userId = :cId";
-		Query query = entityManager.createQuery(queryString);
-		query.setParameter("cId", custId);
-		query.setParameter("c", customer);
 		
 		entityManager.getTransaction().begin();
-		int recordsUpdated = query.executeUpdate();
+		
+		// Retrieve the original customer
+		Customer originalCustomer = getCustomer(custId);
+		
+		// Set modified details
+		originalCustomer.setName(customer.getName());
+		originalCustomer.setEmail(customer.getEmail());
+		originalCustomer.setDob(customer.getDob());
+		originalCustomer.setContactNo(customer.getContactNo());
+		originalCustomer.setAddress(customer.getAddress());
+	
+		entityManager.merge(originalCustomer);
 		entityManager.getTransaction().commit();
 		
-		return recordsUpdated == -1 ? null : getCustomer(custId);
+		return customer;
 	}
 
 	@Override
 	public Customer getCustomer(long custId) {
-		String queryString = "SELECT customer FROM Customer customer WHERE customer.userId = :cId";
+		String queryString = "SELECT customer FROM Customer customer WHERE customer.customerId = :cId";
 		TypedQuery<Customer> query = entityManager.createQuery(queryString, Customer.class);
 		query.setParameter("cId", custId);
 		Customer customer = query.getSingleResult();

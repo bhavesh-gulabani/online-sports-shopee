@@ -44,6 +44,9 @@ public class UserRepositoryImpl implements IUserRepository {
 		// Change his/her password
 		systemUser.setPassword(user.getPassword());
 		
+		// Merge into database
+		entityManager.merge(systemUser);
+		
 		return systemUser;
 	}
 

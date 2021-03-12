@@ -10,14 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
-// Extend User or incorporate HAS-A relationship with user
+// Extends User so will receive its members automatically including id
 
 @Entity
-public class Customer {
+public class Customer extends User {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long customerId;
 	private String name;
 	private String email;
 	private String contactNo;
@@ -31,8 +28,9 @@ public class Customer {
 		super();
 	}
 	
-	public Customer(String name, String email, String contactNo, LocalDate dob, Address address) {
-		super();
+	public Customer(String username, String password, String role, String name, String email, String contactNo,
+			LocalDate dob, Address address) {
+		super(username, password, role);
 		this.name = name;
 		this.email = email;
 		this.contactNo = contactNo;
@@ -41,14 +39,6 @@ public class Customer {
 	}
 
 	// Getters and Setters
-	public long getCustomerId() {
-		return customerId;
-	}
-	
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -88,12 +78,20 @@ public class Customer {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
-	// toString
+
 	@Override
 	public String toString() {
-		return "Customer [customerId=" + customerId + ", name=" + name + ", email=" + email + ", contactNo=" + contactNo
-				+ ", dob=" + dob + ", address=" + address + "]";
+		return "Customer [name=" + name + ", email=" + email + ", contactNo=" + contactNo + ", dob=" + dob
+				+ ", address=" + address + "]";
 	}
+	
+	// toString
+//	@Override
+//	public String toString() {
+//		return "Customer [customerId=" + customerId + ", name=" + name + ", email=" + email + ", contactNo=" + contactNo
+//				+ ", dob=" + dob + ", address=" + address + "]";
+//	}
+	
+	
 	
 }

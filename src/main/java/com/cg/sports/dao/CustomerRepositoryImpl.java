@@ -55,7 +55,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
 
 	@Override
 	public Customer getCustomer(long custId) {
-		String queryString = "SELECT customer FROM Customer customer WHERE customer.customerId = :cId";
+		String queryString = "SELECT customer FROM Customer customer WHERE customer.userId = :cId";
 		TypedQuery<Customer> query = entityManager.createQuery(queryString, Customer.class);
 		query.setParameter("cId", custId);
 		Customer customer = query.getSingleResult();

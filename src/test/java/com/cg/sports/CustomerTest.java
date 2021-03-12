@@ -57,19 +57,19 @@ class CustomerTest {
 	@Order(2)
 	void testAddCustomer() {
 		Address address = new Address("103", "First street", "LA", "NY", "NY", 123456);
-		Customer customer = new Customer("John", "john@gmail.com", "9876543210", LocalDate.of(1989, 03, 16), address);
+		Customer customer = new Customer("ujohn123", "pjohn123", "customer", "John", "john@gmail.com", "9876543210", LocalDate.of(1989, 03, 16), address);
 
 		Customer testResult = custRepo.addCustomer(customer);
 		assertEquals(testResult, customer);
 	}
 	
 	// Working
-	@Disabled
+	
 	@Test
 	@Order(3)
 	void testRemoveCustomer() {
 		
-		long customerId = 107;
+		long customerId = 263;
 		Customer customerToBeRemoved = custRepo.getCustomer(customerId);
 		Customer testResult = custRepo.removeCustomer(customerId);
 		assertEquals(testResult, customerToBeRemoved);
@@ -81,12 +81,15 @@ class CustomerTest {
 	@Order(4)
 	void testUpdateCustomer() {
 		
-		long customerId = 107;
+		long customerId = 263;
 	
 		Address address = new Address("105", "Third street", "LA", "NY", "NY", 123456);
-		Customer newCustomerDetails = new Customer("John", "johnNewNew@gmail.com", "9876543210", LocalDate.of(1989, 03, 16), address);
+		Customer newCustomerDetails = new Customer("ujohn123", "pjohn123", "customer", "John", "johnNewNew@gmail.com", "9876543210", LocalDate.of(1989, 03, 16), address);
 		
 		Customer testResult = custRepo.updateCustomer(customerId, newCustomerDetails);
+		
+		// System.out.println(testResult);
+		
 		assertEquals(testResult, newCustomerDetails);
 	}
 	
@@ -95,13 +98,15 @@ class CustomerTest {
 	@Test
 	@Order(5)
 	void testgetCustomer() {
-		long customerId = 107;
+		long customerId = 263;
 		
 		Address address = new Address("103", "First street", "LA", "NY", "NY", 123456);
-		Customer customerExpected = new Customer("John", "john@gmail.com", "9876543210", LocalDate.of(1989, 03, 16), address);
-		customerExpected.setCustomerId(58);
+		Customer customerExpected = new Customer("ujohn123", "pjohn123", "customer", "John", "john@gmail.com", "9876543210", LocalDate.of(1989, 03, 16), address);
+		customerExpected.setUserId(58);
 		 
 		Customer testResult = custRepo.getCustomer(customerId);
+		
+		// System.out.println(testResult);
 		
 		// Fails due to reference comparison
 		// assertEquals(testResult, customerExpected);
@@ -125,6 +130,7 @@ class CustomerTest {
 	@Order(6)
 	void getAllCustomers() {
 		List<Customer> testResult = custRepo.getAllCustomers();
+		// System.out.println(testResult);
 		assertNotNull(testResult);
 	}
 }

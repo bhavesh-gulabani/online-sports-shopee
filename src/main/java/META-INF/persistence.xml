@@ -5,8 +5,8 @@
        
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE" />
-			<property name="javax.persistence.jdbc.user" value="hr" />
-			<property name="javax.persistence.jdbc.password" value="hr" />
+			<property name="javax.persistence.jdbc.user" value="goku" />
+			<property name="javax.persistence.jdbc.password" value="goku" />
 			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />
 			<property name="hibernate.hbm2ddl.auto" value="update"/>    <!-- for auto create/update tables -->
 			<property name="hibernate.show_sql" value="true"/>

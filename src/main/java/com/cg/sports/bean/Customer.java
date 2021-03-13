@@ -2,13 +2,25 @@ package com.cg.sports.bean;
 
 import java.time.LocalDate;
 
-public class Customer {
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+
+// Extends User so will receive its members automatically including id
+
+@Entity
+public class Customer extends User {
 	
-	private String userId;
 	private String name;
 	private String email;
 	private String contactNo;
 	private  LocalDate dob;
+	
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	private Address address;
 	
 	// Constructors
@@ -16,9 +28,9 @@ public class Customer {
 		super();
 	}
 	
-	public Customer(String userId, String name, String email, String contactNo, LocalDate dob, Address address) {
-		super();
-		this.userId = userId;
+	public Customer(String username, String password, String role, String name, String email, String contactNo,
+			LocalDate dob, Address address) {
+		super(username, password, role);
 		this.name = name;
 		this.email = email;
 		this.contactNo = contactNo;
@@ -27,14 +39,6 @@ public class Customer {
 	}
 
 	// Getters and Setters
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -74,11 +78,20 @@ public class Customer {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
-	// toString
+
 	@Override
 	public String toString() {
-		return "Customer [userId=" + userId + ", name=" + name + ", email=" + email + ", contactNo=" + contactNo
-				+ ", dob=" + dob + ", address=" + address + "]";
+		return "Customer [name=" + name + ", email=" + email + ", contactNo=" + contactNo + ", dob=" + dob
+				+ ", address=" + address + "]";
 	}
+	
+	// toString
+//	@Override
+//	public String toString() {
+//		return "Customer [customerId=" + customerId + ", name=" + name + ", email=" + email + ", contactNo=" + contactNo
+//				+ ", dob=" + dob + ", address=" + address + "]";
+//	}
+	
+	
+	
 }

@@ -3,7 +3,7 @@ package com.cg.sports.dao;
 import java.util.List;
 
 
-import com.cg.sports.bean.User;
+import com.cg.sports.bean.User; 
 
 public interface IUserRepository {
 	public User signIn(User user);
